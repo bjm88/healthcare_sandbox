@@ -4,3 +4,12 @@ matplotlib
 seaborn
 sqlalchemy
 psycopg2-binary
+boto3
+Flask>=2.1
+Flask-Session
+flask-cors
+flask_marshmallow==0.14.0
+marshmallow==3.15.0
+gunicorn
+requests
+Flask-Caching

@@ -12,7 +12,7 @@ class MedicalNote(DatabaseManager.Base):
     id = Column(UUID(as_uuid=True),
                 primary_key=True, server_default=text("gen_random_uuid()"))
     create_dttm = Column(DateTime, nullable=False, server_default=func.now())
-    updated_at = Column(DateTime, onupdate=func.utc_timestamp())
+    updated_at = Column(DateTime, onupdate=func.now())
     description = Column(String(500), nullable=True)
     medical_specialty = Column(String(500), nullable=True)
     sample_name = Column(String(500), nullable=True)
@@ -31,6 +31,7 @@ class MedicalNote(DatabaseManager.Base):
         _obj["id"] = self.id
         _obj["medical_specialty"] = self.medical_specialty
         _obj["keywords"] = self.keywords
+        _obj["description"] = self.description
         _obj["transcription"] = self.transcription
         _obj["entity_extraction"] = self.entity_extraction
         return _obj

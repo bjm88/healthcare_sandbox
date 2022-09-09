@@ -8,7 +8,7 @@ ENVIRONMENT: Final = os.getenv("HS_ENV", "dev")
 LOGGING_LEVEL: Final = logging.DEBUG if ENVIRONMENT != "production" else logging.INFO
 
 #encryption and secrets
-SECRET_KEY: Final = os.getenv("HC_SESSION_SECRET", "")
+SECRET_KEY: Final = os.getenv("HC_SESSION_SECRET", "healthsandbox123!")
 
 # Database
 DB_HOST: Final = os.getenv("RDS_HOSTNAME", "localhost")
