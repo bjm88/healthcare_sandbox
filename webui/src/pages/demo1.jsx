@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import logo from '../mcrenderlogoCropped.png';
 import '../App.css';
 import MCRenderContainer from '../components/mcrender_visialization';
+import { Grid } from "@mui/material"
 
 function Demo1() {
     const [medicalNote, setMedicalNote] = useState(true);
@@ -36,33 +36,25 @@ function Demo1() {
     }, []);
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <p>
-                    AWS hackathon demo of <span className="App-logo-mc">Medical Comprehend Render</span>.
-
-                    <br />
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <br />
-                    <span className="App-logo-mc">MC</span><span>Render</span>
-                </p>
-
-                {medicalNote && (
-                    <div>
+        <Grid container className="MCRenderDemo1">
+            {medicalNote && (
+                <React.Fragment>
+                    <Grid item>
                         <h3>{medicalNote.medical_specialty}</h3>
                         <h3>{medicalNote.description}</h3>
                         <p>{medicalNote.transcription}</p>
+                    </Grid>
+                    <Grid item>
                         <MCRenderContainer medicalNote={medicalNote} />
-                    </div>
-                   
-                )}
-                {!medicalNote && (
+                    </Grid>
+                </React.Fragment>
+            )}
+            {!medicalNote && (
+                <Grid item>
                     <p>Please select a medical note.</p>
-                )}
-            </header>
-            <br/>
-            
-        </div>
+                </Grid>
+            )}
+        </Grid>
     );
 }
 
