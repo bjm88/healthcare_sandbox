@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../mcrenderlogoCropped.png';
 import '../App.css';
-
+import MCRenderContainer from '../components/mcrender_visialization';
 
 function Demo1() {
     const [medicalNote, setMedicalNote] = useState(true);
@@ -52,13 +52,16 @@ function Demo1() {
                         <h3>{medicalNote.medical_specialty}</h3>
                         <h3>{medicalNote.description}</h3>
                         <p>{medicalNote.transcription}</p>
+                        <MCRenderContainer medicalNote={medicalNote} />
                     </div>
-
+                   
                 )}
                 {!medicalNote && (
                     <p>Please select a medical note.</p>
                 )}
             </header>
+            <br/>
+            
         </div>
     );
 }
