@@ -3,8 +3,21 @@ import '../App.css';
 import MCRenderContainer from '../components/mcrender_visialization';
 import { Grid } from "@mui/material"
 
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+
 function Demo1() {
-    const [medicalNote, setMedicalNote] = useState(true);
+    const [medicalNoteId, setMedicalNoteId] = useState();
+    const [medicalNote, setMedicalNote] = useState();
+
+    const handleMedicalNoteChange = (event) => {
+        setMedicalNoteId(event.target.value);
+    };
 
     const loadMedicalNote = async (medNoteId) => {
         if (!medNoteId) {
@@ -29,20 +42,48 @@ function Demo1() {
 
     };
     useEffect(() => {
-        const md_id_maternity_ultrasound_ob = "8daefb13-ea72-4985-aa99-25cb90bc0ba0"
-        loadMedicalNote(md_id_maternity_ultrasound_ob);
-
+        loadMedicalNote(medicalNoteId);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [medicalNoteId]);
 
     return (
-        <Grid container className="MCRenderDemo1">
+        <Grid container className="MCRenderDemo1" justifyContent="center">
+            <Grid item xs={11} >
+                <br/>
+                <Box sx={{ minWidth: 120 }}>
+                    <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">Medical Note</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="medicalNodeSelectionId"
+                            value={medicalNoteId}
+                            label="Select Medical Note"
+                            onChange={handleMedicalNoteChange}
+                        >
+                            <MenuItem value='fdf0813f-6d23-43d3-82fc-948bd9cc2bb4'>OB/GYN, pregnancy ER issue</MenuItem>
+                            <MenuItem value="8daefb13-ea72-4985-aa99-25cb90bc0ba0">OB/GYN, menorrhagia</MenuItem>
+                            <MenuItem value='07b50c9b-1c98-4738-bdef-adb5a0f9089d'>OB/GYN, Pelvic pain, ectopic pregnancy, and hemoperitoneum.</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
+            </Grid>
             {medicalNote && (
                 <React.Fragment>
                     <Grid item>
                         <h3>{medicalNote.medical_specialty}</h3>
-                        <h3>{medicalNote.description}</h3>
+                        <h4>{medicalNote.description}</h4>
+                        <Stack direction="row" spacing={1} justifyContent="center">
+                            {medicalNote.keywords && medicalNote.keywords.split(",").map(keyword => {
+                                if(keyword && keyword.trim().length > 0){
+                                    return <Chip label={keyword} variant="outlined" />
+                                }else {
+                                    return null;
+                                }
+                                
+                            })}
+                        </Stack>
                         <p>{medicalNote.transcription}</p>
+
                     </Grid>
                     <Grid item>
                         <MCRenderContainer medicalNote={medicalNote} />
