@@ -19,6 +19,7 @@ class MedicalNote(DatabaseManager.Base):
     keywords = Column(Text(), nullable=True)
     transcription = Column(Text(), nullable=True)
     entity_extraction = Column(JSONB, nullable=True)
+    derived_data = Column(JSONB, nullable=True)
     org_id = Column(Integer, nullable=True)
     external_id = Column(String(255), nullable=True, index=True)
     source = Column(String(500), nullable=True)
@@ -34,4 +35,5 @@ class MedicalNote(DatabaseManager.Base):
         _obj["description"] = self.description
         _obj["transcription"] = self.transcription
         _obj["entity_extraction"] = self.entity_extraction
+        _obj["derived_data"] = self.derived_data
         return _obj

@@ -4,3 +4,5 @@ python3 -m app.batch.medical_notes_analysis.load_medical_notes app/data/test/fix
 
 python3 -m app.batch.medical_notes_analysis.nlu_medical_notes "entity"
 
+python3 -m app.batch.medical_notes_analysis.derive_medical_note_metadata
+
