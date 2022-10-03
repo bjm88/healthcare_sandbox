@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../App.css';
 import MCRenderContainer from '../components/mcrender_visialization';
+import MedicalNoteDisplay from '../components/medical_note_display';
 import { Grid } from "@mui/material"
-
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,9 +10,11 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import Divider from '@mui/material/Divider';
+
 
 function Demo1() {
-    const [medicalNoteId, setMedicalNoteId] = useState();
+    const [medicalNoteId, setMedicalNoteId] = useState("fdf0813f-6d23-43d3-82fc-948bd9cc2bb4");
     const [medicalNote, setMedicalNote] = useState();
 
     const handleMedicalNoteChange = (event) => {
@@ -48,11 +50,12 @@ function Demo1() {
 
     return (
         <Grid container className="MCRenderDemo1" justifyContent="center">
-            <Grid item xs={11} >
-                <br/>
+            <Grid item xs={12} >
+
                 <Box sx={{ minWidth: 120 }}>
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Medical Note</InputLabel>
+                    <br />
+                    <FormControl >
+                        <InputLabel id="demo-simple-select-label">Select Medical Note</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="medicalNodeSelectionId"
@@ -69,24 +72,33 @@ function Demo1() {
             </Grid>
             {medicalNote && (
                 <React.Fragment>
-                    <Grid item>
-                        <h3>{medicalNote.medical_specialty}</h3>
-                        <h4>{medicalNote.description}</h4>
+                    <Grid item xs={12}>
+                        <h4>{medicalNote.medical_specialty}: &nbsp;&nbsp; {medicalNote.description}</h4>
+
                         <Stack direction="row" spacing={1} justifyContent="center">
                             {medicalNote.keywords && medicalNote.keywords.split(",").map(keyword => {
-                                if(keyword && keyword.trim().length > 0){
-                                    return <Chip label={keyword} variant="outlined" />
-                                }else {
+                                if (keyword && keyword.trim().length > 0) {
+                                    return <Chip label={keyword} key={keyword} variant="outlined" />
+                                } else {
                                     return null;
                                 }
-                                
+
                             })}
                         </Stack>
-                        <p>{medicalNote.transcription}</p>
-
+                        <br />
                     </Grid>
-                    <Grid item>
-                        <MCRenderContainer medicalNote={medicalNote} />
+                    <Grid item xs={12}>
+                        <Grid container justifyContent="center" spacing={3}>
+                            <Grid item xs={5}>
+                                <MedicalNoteDisplay medicalNote={medicalNote} />
+                            </Grid>
+                            <Divider orientation="vertical" flexItem>
+
+                            </Divider>
+                            <Grid item xs={6}>
+                                <MCRenderContainer medicalNote={medicalNote} />
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </React.Fragment>
             )}
@@ -95,7 +107,9 @@ function Demo1() {
                     <p>Please select a medical note.</p>
                 </Grid>
             )}
+
         </Grid>
+   
     );
 }
 

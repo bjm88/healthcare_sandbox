@@ -9,7 +9,7 @@ import './App.css';
 function App() {
   return (
     <Grid container spacing={0} className="App">
-      <Grid item lg={12} xm={12}  className="App-header">
+      <Grid item lg={12} xm={12} className="App-header">
         <Grid container spacing={0}>
           <Grid item lg={2} xm={2} className="HeaderLogoContainer">
             <img src={logo} className="App-logo" alt="logo" />
@@ -26,6 +26,10 @@ function App() {
             <Route path="/demo1" element={<Demo1 />} />
           </Routes>
         </BrowserRouter>
+      </Grid>
+      <Grid lg={12} item>
+        <br />
+        <br />
       </Grid>
     </Grid>
   );
