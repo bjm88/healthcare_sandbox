@@ -11,7 +11,7 @@ import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
-
+// /Straighten
 
 function Demo1() {
     const [medicalNoteId, setMedicalNoteId] = useState("fdf0813f-6d23-43d3-82fc-948bd9cc2bb4");
@@ -55,7 +55,7 @@ function Demo1() {
                 <Box sx={{ minWidth: 120 }}>
                     <br />
                     <FormControl >
-                        <InputLabel id="demo-simple-select-label">Select Medical Note</InputLabel>
+                        <InputLabel id="inputSelectMedicalNote">Select Medical Note</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="medicalNodeSelectionId"
@@ -64,7 +64,7 @@ function Demo1() {
                             onChange={handleMedicalNoteChange}
                         >
                             <MenuItem value='fdf0813f-6d23-43d3-82fc-948bd9cc2bb4'>OB/GYN, pregnancy ER issue</MenuItem>
-                            <MenuItem value="8daefb13-ea72-4985-aa99-25cb90bc0ba0">OB/GYN, menorrhagia</MenuItem>
+                            <MenuItem value="6bb29d28-c05f-46c1-8d90-ec7fe4d0145f">OB/GYN, pregnancy ultrasound scan</MenuItem>
                             <MenuItem value='07b50c9b-1c98-4738-bdef-adb5a0f9089d'>OB/GYN, Pelvic pain, ectopic pregnancy, and hemoperitoneum.</MenuItem>
                         </Select>
                     </FormControl>

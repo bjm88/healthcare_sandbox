@@ -39,6 +39,7 @@ def derive_medical_note_metadata(mn):
         response = {}
         derive_base_image(mn, response)
         derive_key_phrases(mn, response)
+        derive_vitals_and_metrics(mn, response)
     except Exception as ex:
         logger.exception(
             "Error: Couldn't derive metadata for Medical note " + str(mn.id) + ", error=" + str(ex))
@@ -48,7 +49,7 @@ def derive_medical_note_metadata(mn):
 
 def derive_base_image(md, response):
     if md.medical_specialty.lower().strip() in ["obstetrics / gynecology", "ob/gyn", "obgyn"]:
-        if "pregnancy" in md.transcription.lower().strip() or "pregnancy" in md.keywords.lower().strip():
+        if "pregnancy" in md.transcription.lower().strip() or "pregnancy" in md.keywords.lower().strip() or "ultrasound of pelvis" in md.keywords.lower().strip():
             # ex: looking for 8 weeks gestational age
             num_weeks_pregnant = None
             regex_result = re.search(r".*(\d)+ weeks .*(gestational).*", md.transcription)
@@ -63,6 +64,7 @@ def derive_base_image(md, response):
 
             if num_weeks_pregnant is not None:
                 response["num_weeks_pregnant"] = num_weeks_pregnant
+                num_weeks_pregnant = re.sub("[^\d\.]", "", num_weeks_pregnant)
                 x = int(num_weeks_pregnant)
                 if x <= 7:
                     response["base_image"] = "pregnancy_early"
@@ -104,6 +106,23 @@ def derive_key_phrases(md, response):
 
     #response["anatomy_stats"] = pd.DataFrame(list(freq_dict_anatomy.items()), columns= ['word','count']).sort_values('count').to_json()
     #response["condition_stats"] = pd.DataFrame(list(freq_dict_conditions.items()), columns= ['word','count']).sort_values('count').to_json()
-    
+
+
+def derive_vitals_and_metrics(md, response):
+
+    if md.medical_specialty.lower().strip() in ["obstetrics / gynecology", "ob/gyn", "obgyn"]:
+        if "pregnancy" in md.transcription.lower().strip() or "pregnancy" in md.keywords.lower().strip() or "ultrasound of pelvis" in md.keywords.lower().strip():
+            pregnancyMeasurements = {}
+            # examples
+            # BPD: 3.5cm consistent with 16 weeks, 6 days gestation
+            # HC: 12.0cm consistent with 16 weeks, 4 days
+            for m in ["BPD", "HC", "AC", "FL"]:
+                print("searching " + str(m) + "...")
+                regex_result = re.search(r".*" + m +": (\d+.\d+)cm .*", md.transcription)
+                if regex_result:
+                    measurementCm = regex_result.group(1)
+                    pregnancyMeasurements[m] = measurementCm
+            response["pregnancyMeasurements"] = pregnancyMeasurements
+
 if __name__ == "__main__":
     derive_medical_notes_metadata()
