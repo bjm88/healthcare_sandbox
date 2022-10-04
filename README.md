@@ -1,7 +1,7 @@
 ### A playground for health projects
 ### "Medical Comprehened Render" AKA MCRender
 
-![MCRender](webui/src/logo.svg)
+![MCRender](webui/src/mcrenderlogoCropped.png)
 
 Goal: Visualize medical charts for quick understanding and allowing a broader set of patients, care team members, nursing, and others besides physicians to understand what is in the medical note.  Increase speed and access with visual rendering of dynamic human anatomny with information overlays.
 
