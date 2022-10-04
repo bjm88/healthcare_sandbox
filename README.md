@@ -19,6 +19,11 @@ Future Tech:  use three.js and have realistic interactive 3D model that is dynam
 ![MCRender](concept_imgs/mc_render_concept_image.png)
 
 
+### Video explaining demo app
+
+https://vimeo.com/user26617554/mcrender
+
+
 
 ![Anatomy](concept_imgs/obgyn_anatomy.png)
 
