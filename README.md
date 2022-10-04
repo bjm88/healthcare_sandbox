@@ -17,6 +17,8 @@ Use cases for future would include ER where quick assessment is needed and visua
 Future Tech:  use three.js and have realistic interactive 3D model that is dynamically generated from the medical note.  Translating details of medical note into anotomoically correct 3D model will be graphic design challenge and could open up doors for really interesting new UI.  Eventually clinicians could even use the 3D base model of body to chart.
 
 
+![MCRender](mc_render_concept_image.png)
+
 ### License
 
 Copyright © 2022, [Ben Maisano](https://github.com/bjm88).  Not released to public.
