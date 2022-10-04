@@ -1,10 +1,7 @@
-### healthcare_sandbox
 ### A playground for health projects
-
-### AWS hackathon for medical comprehend
 ### "Medical Comprehened Render" AKA MCRender
 
-Goal: Visualize medical notes for quick understanding and allowing a broader set of patients, care team members, nursing, and others besides physicians to understand what is in the medical note.
+Goal: Visualize medical charts for quick understanding and allowing a broader set of patients, care team members, nursing, and others besides physicians to understand what is in the medical note.  Increase speed and access with visual rendering of dynamic human anatomny with information overlays.
 
 Approach:  Take samples from mtsamples.com for OB/GYN pregancy cases.  Process them through AWS Medical Comprehend, add 2nd level custom processing specific to pregnancy and visualization, store results.  Provide API to data, and sample UI to show two different renders from different notes.
 
@@ -19,6 +16,12 @@ Future Tech:  use three.js and have realistic interactive 3D model that is dynam
 
 ![MCRender](mc_render_concept_image.png)
 
+
+
+![Anatomy](obgyn_anatomy.png)
+
+
+![MedConditions](obgyn_medical_conditions.png)
 ### License
 
 Copyright © 2022, [Ben Maisano](https://github.com/bjm88).  Not released to public.
