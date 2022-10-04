@@ -72,8 +72,8 @@ function MCRenderContainer(props) {
             //pregnancy measurements
             if (medicalNote.derived_data["pregnancyMeasurements"]){
                 overlaysArray.push({ "icon": "Straighten", bot: 55, left: 175, text: "BPD (biparietal head diameter) " + medicalNote.derived_data["pregnancyMeasurements"]["BPD"] + " - " + "HC (head circumference) " + medicalNote.derived_data["pregnancyMeasurements"]["HC"] + "cm", color:'black' })
-                overlaysArray.push({ "icon": "Straighten", bot: 155, left: 80, text: "AC (abdominal circumference) " + medicalNote.derived_data["pregnancyMeasurements"]["AC"]+ "cm", color:'black' })
-                overlaysArray.push({ "icon": "Straighten", bot: 215, left: 75, text: "Femur Length (FL) " + medicalNote.derived_data["pregnancyMeasurements"]["FL"]+ "cm", color:'black' })
+                overlaysArray.push({ "icon": "Straighten", bot: 155, left: 80, text: "AC (abdominal circumference) " + medicalNote.derived_data["pregnancyMeasurements"]["AC"] + "cm", color:'black' })
+                overlaysArray.push({ "icon": "Straighten", bot: 215, left: 75, text: "Femur Length (FL) " + medicalNote.derived_data["pregnancyMeasurements"]["FL"] + "cm", color:'black' })
             }
 
             setOverlays(overlaysArray);

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>Documentation of the Face Anatomy Template</title>
+  <link rel="stylesheet" href="ess-files/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="ess-files/print.css" type="text/css" media="print">
+  <link rel="stylesheet" href="ess-files/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+  <script src="ess-files/AC_RunActiveContent.js" type="text/javascript"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="center"><small>Documentation of the<br></small>&ldquo;Face Anatomy Template&rdquo;</h1>
+
+    <hr><h2 id="up" class="alt">Table of Contents</h2>
+    <ol class="alpha">
+      <li><a href="#overview">General overview</a></li>
+      <li><a href="#installation">Installation in a Standard website</a></li>
+      <li><a href="#wp">Installation in a WordPress website</a></li>
+      <li><a href="#customization">Customization</a></li>
+      <li><a href="#pins">How to add/remove and modify spots?</a></li>
+      <li><a href="#xy">How to get the X, Y coordinates?</a></li>
+    </ol>
+
+    <hr><h3 id="overview"><strong><u>General overview</u></strong> - <a href="#up">top</a></h3>
+    <p>This is an interactive template of the face anatomy that consists of HTML, CSS, JS files (Also include installable WordPress plugin). You can customize the hover information, links, etc through simple JavaScript files (JavaScript knowledge is not required). Also you can add unlimited number of clickable spots anywhere on the figure using X, Y coordinates, then embed the customized figure in your website pages.</p>
+
+
+
+
+
+    <hr><h3 id="installation"><strong><u>Installation in a Standard website</u></strong> - <a href="#up">top</a></h3>
+    <ol>
+      <li>Upload the folder '<strong>anatomy-face</strong>' to any directory in your website.<br>You can use <a href="https://filezilla-project.org/download.php">FileZilla</a> as FTP client to upload files to your website, and here is a <a href="https://www.youtube.com/watch?v=A-gr0LIWT64">video tutorial</a> about that.</li>
+      <li>Test the template by opening the full path of the 'index.html' file in a web browser (such as Google Chrome), the full path should be something like this:<br>http://www.yoursite.com/anatomy-face/index.html<br>If you don't see the interactive figure or redirected to '404 Page not found', make sure you are using the correct path of the uploaded folder.</li>
+      <li>Copy the following code and paste it before <strong>&lt;/head&gt;</strong> tag in your website page, and make sure to change 'yoursite.com' to the correct full path of the files.
+        <!--https://www.freeformatter.com/html-escape.html-->
+<pre>
+&lt;link href=&quot;http://www.yoursite.com/anatomy-face/illustration-style.css&quot;  rel=&quot;stylesheet&quot; type=&quot;text/css&quot;/&gt;
+&lt;script src=&quot;http://www.yoursite.com/anatomy-face/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://www.yoursite.com/anatomy-face/anatomy-settings.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://www.yoursite.com/anatomy-face/spots-settings.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://www.yoursite.com/anatomy-face/interact-script.js&quot;&gt;&lt;/script&gt;
+</pre>
+      </li>
+      <li>On your computer, open the file '<strong>anatomy-face/index.html</strong>' using any code editor (such as <a href="https://www.sublimetext.com/">Sublime</a> or <a href="https://notepad-plus-plus.org/">Notepad++</a>).</li>
+      <li>Copy the code in between <strong>&lt;body&gt;</strong> and <strong>&lt;/body&gt;</strong><br>
+        from
+<pre>
+&lt;span id=&quot;anatip&quot;&gt;&lt;/span&gt;
+&lt;div id=&quot;anawrapper&quot;&gt;
+</pre>
+        down to...
+<pre>
+&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+</pre>
+      </li>
+      <li>Paste the code in your website page.</li>
+    </ol>
+      <strong>Important note:</strong> With some website templates and due to divs arrangement, the floating hover popup may be pushed away from where it should be, to avoid that we recommend that you cut the span "anatip" line of code and paste it just after the opening body tag of the page like this:
+<pre>
+&lt;body&gt;
+&lt;span id=&quot;anatip&quot;&gt;&lt;/span&gt;
+</pre>
+
+
+
+
+    <hr><h3 id="wp"><strong>Installation in a WordPress website</strong> - <a href="#up">top</a></h3>
+    <p>Inside the folder '<strong>WordPress Plugin</strong>' you will find the installable WordPress plugin zip file '<strong>anatomy-face.zip</strong>', you need to login to your WordPress website admin panel and install the plugin as follow:</p>
+    <ol>
+      <li>Go to 'Plugins' > 'Add New'</li>
+      <li>Click 'Upload Plugin' then 'Choose File', on your computer select the file '<strong>anatomy-face.zip</strong>' ( included ).</li>
+      <li>Click 'Install Now', then 'Activate Plugin'.</li>
+      <li>In the left side bar you will see a new tab for the Anatomy figure, click it to start the customization.</li>
+    </ol>
+    <p>You will be able to customize the hover information and the link for each part through the visual editor. However adding clickable spots needs to be done by manual editing of the plugin file "spots-settings.js" and you can access this file through your WordPress admin panel under "Plugins" > "Editor".</p>
+
+    <strong><u>How to open a modal window on part click?</u></strong>
+    <ol>
+      <li>Install <a href="https://wordpress.org/plugins/popup-maker/">Popup Maker</a> plugin.</li>
+      <li>Click "Add New Popup" and write the wanted information.</li>
+      <li>Then click the button "Add New Trigger" > "Click Open" > "Extra CSS Selector".</li>
+      <li>Write dot + the default part name as seen in the dashboard (but use lower case and replace spaces with dash), examples: <br>
+        FULL FACE > .full-face<br>
+        FOREHEAD > .forehead<br>
+        EYE [RT] > .eye-rt<br>
+        CHEEK [LT] > .cheek-lt</li>
+      <li>Click "Add" then "Publish".</li>
+      <li>In the anatomy dashboard, for that part choose "Target" > "None / Modal" instead of the default "Same Page".</li>
+      Note: The modal window will work in the frontend pages not in the dashboard preview.
+    </ol>
+
+
+
+
+
+
+    <hr><h3 id="customization"><strong><u>Customization?</u></strong> - <a href="#up">top</a></h3>
+    <p>For the Standard template, you can customize the hover information, link, etc for each part through the included '<strong>anatomy-settings.js</strong>' file (JavaScript knowledge is not required). You can open that file using any code editor (such as <a href="https://www.sublimetext.com/">Sublime</a> or <a href="https://notepad-plus-plus.org/">Notepad++</a>).</p>
+    <ul>
+      <li>"<strong>hover</strong>": "write some basic information for the popup",</li>
+      <li>"<strong>url</strong>": "http://www.thelink.com/",//link to any webpage</li>
+      <li>"<strong>target</strong>": "same_window",
+        <ol>
+          <li>"same_window" to open the link in the same window.</li>
+          <li>"new_window" to open the link in a new window.</li>
+          <li>"modal" to open a modal window, in this case you need to change the above "url" to the required modal window name such as<br>"url": "#mymodal"<br><i>Note: This option works only with Bootstrap website templates and Bootstrap based WordPress themes, if you are not sure or if you don't know how to use it, you need to ask your website template/theme provider</i>.</li>
+          <li>"none" use it if you have enough information in the popup and you don't want to make the area clickable but the popup still working.</li>
+        </ol>
+      </li>
+      <li>"<strong>enabled</strong>": true<br>You can set it to false to make this area inactive (not clickable, no highlight, no popup).</li>
+    </ul>
+
+
+
+
+
+
+    <hr><h3 id="pins"><strong>How to add/remove and modify spots?</strong> - <a href="#up">top</a></h3>
+    <p>You can customize the existing pins, add or remove pins through the file '<strong>spots-settings.js</strong>'.</p>
+    <ul>
+      <li>"<strong>hover</strong>": "write some basic information for the popup",</li>
+      <li>"<strong>pos_X</strong>": 20, "<strong>pos_Y</strong>": 50, use this <a href="#xy">guide</a> to obtain the wanted values.</li>
+      <li>"<strong>size</strong>": 18, size of the spot.</li>
+      <li>"<strong>outline</strong>": "#660000".</li>
+      <li>"<strong>upColor</strong>": "#e60000", "<strong>overColor</strong>": "#ffd480".</li>
+      <li>"<strong>url</strong>": "http://www.thelink.com/",//link to any webpage</li>
+      <li>"<strong>target</strong>": "same_window",
+        <ol>
+          <li>"same_window" to open the link in the same window.</li>
+          <li>"new_window" to open the link in a new window.</li>
+          <li>"modal" to open a modal window, in this case you need to change the above "url" to the required modal window name such as<br>"url": "#mymodal"<br><i>Note: This option works only with Bootstrap website templates and Bootstrap based WordPress themes, if you are not sure or if you don't know how to use it, you need to ask your website template/theme provider</i>.</li>
+          <li>"none" use it if you have enough information in the popup and you don't want to make the area clickable but the popup still working.</li>
+        </ol>
+      </li>
+      <li>"<strong>enabled</strong>": true<br>You can set it to false to make this area inactive (not clickable, no highlight, no popup).</li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+    <hr><h3 id="xy"><strong>How to get the X, Y coordinates?</strong> - <a href="#up">top</a></h3>
+    <p>Click anywhere on the following interactive guide to get the X, Y coordinates values and use them in the '<strong>spots-settings.js</strong>' file:<br><small>This interactive guide requires Adobe Flash Player in your browser, however the actual template files does not include Flash and does not require Flash player to work. If this guide doesn't work for you, you can use this chart <a href="ess-files/xyguidea.png">image A</a>.</small></p>
+    <p align="center">
+      <script type="text/javascript">
+      AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','485','height','509','src','ess-files/xyguide','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','ess-files/xyguide' );</script>
+      <noscript>
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="485" height="509">
+            <param name="movie" value="ess-files/xyguide.swf">
+            <param name="quality" value="high">
+            <embed src="ess-files/xyguide.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="485" height="509"></embed>
+          </object>
+        </noscript>
+      </p>
+
+      <hr>
+
+      <p>Thank you for purchasing our template. If you have any questions that are beyond the scope of this help file, please feel free to contact us through the contact form <a href="https://www.humananatomyillustrations.com/assets/contact.html">here</a>.</p>
+      <p class="append-bottom alt large"><strong>Thank you</strong><br>
+        <a href="https://www.humananatomyillustrations.com/assets/contact.html">humanAnatomyIllustrations.com</a><br>Support Team
+      </p>
+  </div><!-- end div .container -->
+</body>
+</html>

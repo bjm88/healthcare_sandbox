@@ -7,7 +7,7 @@ import seaborn as sns
 
 print("Starting Medical Transcription program...")
 print("Starting Medical Transcription data load...")
-clinical_text_df = pd.read_csv("./test/fixtures/mtsamples.csv")
+clinical_text_df = pd.read_csv("./app/data/test/fixtures/mtsamples.csv")
 print("Finished Medical Transcription data load.")
 print(clinical_text_df.columns)
 
